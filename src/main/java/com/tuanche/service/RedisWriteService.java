@@ -18,4 +18,14 @@ public interface RedisWriteService {
     Long expire(final String key,final int seconds, final JedisCluster jedisCluster);
 
     Long expireAt(final String key, final long unixTime,final JedisCluster jedisCluster);
+
+    Long persist(final String key, final JedisCluster jedisCluster);
+
+    Long pexpire(final String key, final long milliseconds, final JedisCluster jedisCluster);
+
+    Long pexpireAt(final String key, final long unixTime, final JedisCluster jedisCluster);
+
+    String rename(final String oldKey, final String newKey, final JedisCluster jedisCluster);
+
+    Long renamenx(final String oldKey, final String newKey, final JedisCluster jedisCluster);
 }

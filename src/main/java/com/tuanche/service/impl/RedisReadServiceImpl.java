@@ -8,9 +8,7 @@ import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisCluster;
 import redis.clients.jedis.JedisPool;
 
-import java.util.Map;
-import java.util.Set;
-import java.util.TreeSet;
+import java.util.*;
 
 /**
  * Created by Administrator on 2017/7/12.
@@ -41,4 +39,20 @@ public class RedisReadServiceImpl implements RedisReadService {
         }
         return set;
     }
+
+    public Long pttl(String key, JedisCluster jedisCluster) {
+        return jedisCluster.pttl(key);
+    }
+
+    public String randomkey(JedisCluster jedisCluster) {
+        Set<String> keys = this.keys("", jedisCluster);
+        if(null != keys && keys.size() > 0) {
+            List list = new ArrayList(keys);
+            Object o = list.get((int) Math.floor(Math.random() * keys.size()));
+            return null == o ? null : String.valueOf(o) ;
+        }
+        return null;
+    }
+
+
 }

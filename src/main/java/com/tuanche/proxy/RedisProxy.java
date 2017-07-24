@@ -52,32 +52,32 @@ public class RedisProxy implements RedisApi {
         return redisReadService.keys(regiexKey,jedisCluster);
     }
 
-    public String persist(String key) {
-        return null;
+    public Long persist(String key) {
+        return redisWriteService.persist(key,jedisCluster);
     }
 
-    public Long pexpire(String key) {
-        return null;
+    public Long pexpire(String key,long milliseconds) {
+        return redisWriteService.pexpire(key,milliseconds,jedisCluster);
     }
 
-    public Long pexpireAt(String key) {
-        return null;
+    public Long pexpireAt(String key,long unixTime) {
+        return redisWriteService.pexpireAt(key,unixTime,jedisCluster);
     }
 
     public Long pttl(String key) {
-        return null;
+        return redisReadService.pttl(key,jedisCluster);
     }
 
-    public String randomkey(String key) {
-        return null;
+    public String randomkey() {
+        return redisReadService.randomkey(jedisCluster);
     }
 
-    public String rename(String srcKey, String desKey) {
-        return null;
+    public String rename(String oldKey, String newKey) {
+        return redisWriteService.rename(oldKey,newKey,jedisCluster);
     }
 
-    public String renamenx(String oldKey, String newKey) {
-        return null;
+    public Long renamenx(String oldKey, String newKey) {
+        return redisWriteService.renamenx(oldKey,newKey,jedisCluster);
     }
 
 

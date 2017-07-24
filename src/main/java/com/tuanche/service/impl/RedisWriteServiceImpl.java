@@ -64,4 +64,24 @@ public class RedisWriteServiceImpl implements RedisWriteService {
     public Long expireAt(String key, long unixTime, JedisCluster jedisCluster) {
         return jedisCluster.expireAt(key,unixTime);
     }
+
+    public Long persist(String key, JedisCluster jedisCluster) {
+        return jedisCluster.persist(key);
+    }
+
+    public Long pexpire(String key, long milliseconds,JedisCluster jedisCluster) {
+        return jedisCluster.pexpire(key,milliseconds);
+    }
+
+    public Long pexpireAt(String key, long unixTime, JedisCluster jedisCluster) {
+        return jedisCluster.pexpireAt(key,unixTime);
+    }
+
+    public String rename(String oldKey, String newKey, JedisCluster jedisCluster) {
+        return jedisCluster.rename(oldKey,newKey);
+    }
+
+    public Long renamenx(String oldKey, String newKey, JedisCluster jedisCluster) {
+        return jedisCluster.renamenx(oldKey,newKey);
+    }
 }

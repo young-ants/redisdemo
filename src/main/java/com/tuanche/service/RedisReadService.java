@@ -12,4 +12,8 @@ public interface RedisReadService {
     String get(final String key, final JedisCluster jedisCluster);
 
     Set<String> keys(final String regiexKey, final JedisCluster jedisCluster);
+
+    Long pttl(final String key, final JedisCluster jedisCluster);
+
+    String randomkey(final JedisCluster jedisCluster);
 }
